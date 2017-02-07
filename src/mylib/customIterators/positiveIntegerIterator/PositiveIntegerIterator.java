@@ -2,6 +2,7 @@ package mylib.customIterators.positiveIntegerIterator;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /*
  * Goal: Given an Iterator of type Integer, provide an Iterator<Integer> implementation
@@ -34,6 +35,9 @@ public class PositiveIntegerIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() { // throws NoSuchElementException
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
         Integer tmp = next; // value to be returned
         next = 0; // initializing to zero assuming there might not be next positive integer
         // move the cursor to the next positive integer before returning
